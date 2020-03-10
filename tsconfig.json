@@ -5,7 +5,8 @@
     "strict": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "lib": ["dom", "es5", "es6"]
+    "lib": ["dom", "es5", "es6"],
+    "types": ["@types/signalr"]
   },
   "include": ["src/**/*"]
 }
