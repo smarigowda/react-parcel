@@ -1,4 +1,4 @@
-# React.js + TypeScript + Parcel bundler
+# React.js + TypeScript + Parcel Bundler + SignalR
 
 ## References
 
