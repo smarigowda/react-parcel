@@ -1,0 +1,24 @@
+{
+  "name": "react-parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "Santosh Marigowda",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}
