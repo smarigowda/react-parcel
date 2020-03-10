@@ -4,7 +4,7 @@ interface Props {
   connection: signalR.HubConnection;
 }
 
-const Count: React.FunctionComponent<Props> = ({ connection }) => {
+const TableBooking: React.FunctionComponent<Props> = ({ connection }) => {
   if (connection) {
     console.log(connection);
     // .Net calls ReceiveMessage
@@ -16,7 +16,7 @@ const Count: React.FunctionComponent<Props> = ({ connection }) => {
   } else {
     console.error("signalR connection not available yet...!");
   }
-  return <p>Count Component</p>;
+  return <p>Table Booking Component</p>;
 };
 
-export default Count;
+export default TableBooking;

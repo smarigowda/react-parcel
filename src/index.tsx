@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import * as signalR from "@microsoft/signalr";
 // local
 import "./index.css";
-import Count from "./components/Count";
+import TableBooking from "./components/TableBooking";
 
 // SignalR
 let connection: signalR.HubConnection = new signalR.HubConnectionBuilder()
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <aside>
       <p>Hello SignalR !</p>
-      <Count connection={connection}></Count>
+      <TableBooking connection={connection}></TableBooking>
     </aside>
   );
 };
