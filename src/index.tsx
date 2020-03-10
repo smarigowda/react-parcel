@@ -5,12 +5,16 @@ import "./index.css";
 import Count from "./components/Count";
 import * as signalR from "@microsoft/signalr";
 
-
 // setup and initiate SignalR
 let connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chat")
-    .build();
-    
+  .withUrl("https://localhost:5001/chatHub")
+  .build();
+
+connection.on("ReceiveMessage", data => {
+  console.log(`A message received from server (method = ReceiveMessage) ${data}`);
+});
+
+connection.start().then(() => connection.invoke("SendMessage", "Hello"));
 class App extends Component {
   render() {
     return (
