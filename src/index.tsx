@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { render } from "react-dom";
 import * as signalR from "@microsoft/signalr";
 // local
@@ -11,14 +12,20 @@ let connection: signalR.HubConnection = new signalR.HubConnectionBuilder()
   .build();
 
 const App = () => {
-  React.useEffect(() => {
-    console.log('[App] Start SignalR connection.');
-    connection.start().then(() => connection.invoke("SendMessage", "Hello")); // calls .Net SendMessage method
+  let [showTableComponent, setShowTableComponent] = useState(false);
+  useEffect(() => {
+    console.log("[App] Befoer Start SignalR");
+    console.log(`[App] connectionId = ${connection.connectionId}`);
+    connection.start().then(() => {
+      console.log("[App] After Start SignalR");
+      console.log(`[App] connectionId = ${connection.connectionId}`);
+      setShowTableComponent(true);
+    });
   }, []);
   return (
     <aside>
       <p>Hello SignalR !</p>
-      <TableBooking connection={connection}></TableBooking>
+        {showTableComponent ? <TableBooking connection={connection}></TableBooking> : null}
     </aside>
   );
 };
