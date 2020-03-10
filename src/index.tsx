@@ -6,23 +6,19 @@ import "./index.css";
 import Count from "./components/Count";
 
 // SignalR
-let connection = new signalR.HubConnectionBuilder()
+let connection: signalR.HubConnection = new signalR.HubConnectionBuilder()
   .withUrl("https://localhost:5001/chatHub")
   .build();
 
-connection.on("ReceiveMessage", data => {
-  console.log(
-    `A message received from server (method = ReceiveMessage) ${data}`
-  );
-});
-
-connection.start().then(() => connection.invoke("SendMessage", "Hello"));
-
 const App = () => {
+  React.useEffect(() => {
+    console.log('[App] Start SignalR connection.');
+    connection.start().then(() => connection.invoke("SendMessage", "Hello")); // calls .Net SendMessage method
+  }, []);
   return (
     <aside>
-      <h1>Hello SignalR !</h1>
-      {/* <Count count={0}></Count> */}
+      <p>Hello SignalR !</p>
+      <Count connection={connection}></Count>
     </aside>
   );
 };
