@@ -1,0 +1,9 @@
+.bt_send_button {
+    font-size: 2rem;
+    border-radius: 5px;
+    outline: none;
+}
+
+.bt_send_button:hover {
+    background-color: aquamarine;
+}

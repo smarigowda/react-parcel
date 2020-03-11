@@ -8,7 +8,19 @@ import TableBooking from "./components/TableBooking";
 
 // SignalR
 let connection: signalR.HubConnection = new signalR.HubConnectionBuilder()
-  .withUrl("https://localhost:5001/chatHub")
+  .withUrl("https://localhost:5001/tableBookingHub")
+  .withAutomaticReconnect([
+    15000,
+    15000,
+    15000,
+    15000,
+    15000,
+    15000,
+    15000,
+    15000,
+    15000,
+    15000
+  ])
   .build();
 
 const App = () => {
@@ -25,7 +37,9 @@ const App = () => {
   return (
     <aside>
       <p>Hello SignalR !</p>
-        {showTableComponent ? <TableBooking connection={connection}></TableBooking> : null}
+      {showTableComponent ? (
+        <TableBooking connection={connection}></TableBooking>
+      ) : null}
     </aside>
   );
 };
