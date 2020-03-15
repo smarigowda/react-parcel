@@ -2,6 +2,9 @@
     font-size: 2rem;
     border-radius: 5px;
     outline: none;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .bt_send_button:hover {

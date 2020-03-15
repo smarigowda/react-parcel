@@ -5,6 +5,7 @@ interface Props {
 }
 
 const TableBooking: React.FunctionComponent<Props> = ({ connection }) => {
+  // to do: UI
   let message = {
     text: "Book a table for me in your restaurant ....!",
     email: "santosharakere@gmail.com",
@@ -21,6 +22,8 @@ const TableBooking: React.FunctionComponent<Props> = ({ connection }) => {
   // .Net > js
   connection.on("BookTableResponse", data => {
     console.log(`[Count] A message is received from server ${data}`);
+    // show a toast message for about 5 sec ? 
+    // or with a button to close the message
   });
 
   const handleTableBooking = () => {
