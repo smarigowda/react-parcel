@@ -5,6 +5,18 @@ interface Props {
 }
 
 const TableBooking: React.FunctionComponent<Props> = ({ connection }) => {
+  let message = {
+    text: "Book a table for me in your restaurant ....!",
+    email: "santosharakere@gmail.com",
+    name: "Santosh Marigowda",
+    phone: "07920830031",
+    day: "02",
+    month: "01",
+    year: "2020",
+    startTime: "09:30",
+    endTime: "10:00",
+    connectionId: connection.connectionId
+  };
   console.log("[TableBooking]", connection);
   // .Net > js
   connection.on("BookTableResponse", data => {
@@ -13,16 +25,19 @@ const TableBooking: React.FunctionComponent<Props> = ({ connection }) => {
 
   const handleTableBooking = () => {
     // js > .Net
-    connection.invoke(
-      "BookTableRequest",
-      "Book A Table for me in a Cool restaurant....!"
-    );
+    if(connection.state === 'Connected') {
+      connection.invoke("BookTableRequest", JSON.stringify(message));
+    } else {
+      console.log('Please refresh your browser. And try again... Sorry');
+    }
   };
 
   return (
     <aside>
-      <p>Table Booking Component</p>
-      <button onClick={handleTableBooking} className="bt_send_button">Book Now</button>
+      <h1 className="heading">Table Booking</h1>
+      <button onClick={handleTableBooking} className="bt_send_button">
+        Book Now
+      </button>
     </aside>
   );
 };

@@ -9,19 +9,11 @@ import TableBooking from "./components/TableBooking";
 // SignalR
 let connection: signalR.HubConnection = new signalR.HubConnectionBuilder()
   .withUrl("https://localhost:5001/tableBookingHub")
-  .withAutomaticReconnect([
-    15000,
-    15000,
-    15000,
-    15000,
-    15000,
-    15000,
-    15000,
-    15000,
-    15000,
-    15000
-  ])
+  .withAutomaticReconnect([0, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 5000, 10000, 15000, 30000])
   .build();
+
+// Reconnect will bring its own issues,
+// instead, tell the connected user to refresh the browser.
 
 const App = () => {
   let [showTableComponent, setShowTableComponent] = useState(false);
@@ -36,7 +28,6 @@ const App = () => {
   }, []);
   return (
     <aside>
-      <p>Hello SignalR !</p>
       {showTableComponent ? (
         <TableBooking connection={connection}></TableBooking>
       ) : null}

@@ -6,4 +6,13 @@
 
 .bt_send_button:hover {
     background-color: aquamarine;
+    cursor: pointer;
+}
+
+.bt_send_button:active {
+    color: blue;
+    border: black 5px solid;
+}
+.heading {
+    font-size: 3rem;
 }
